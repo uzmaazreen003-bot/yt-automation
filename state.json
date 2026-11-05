@@ -1,8 +1,9 @@
 {
- "palette_i": 4,
+ "palette_i": 5,
  "used": {
   "long": [
-   "Roz ki 10 minute ki self-care routine"
+   "Roz ki 10 minute ki self-care routine",
+   "Pehli salary aane par sabse pehle kya karein"
   ],
   "short": [
    "Pehli salary aane par sabse pehle kya karein",
@@ -41,6 +42,14 @@
    "topic": "Ghar ka mental load kya hota hai",
    "pillar": "mental_load",
    "title": "Ghar ka Mental Load kam karne ki ek simple tip #Shorts",
+   "video_id": null
+  },
+  {
+   "date": "2026-11-05 13:12",
+   "format": "long",
+   "topic": "Pehli salary aane par sabse pehle kya karein",
+   "pillar": "money",
+   "title": "Pehli Salary? Ye 5 Kaam Karo, Life Set Ho Jayegi!",
    "video_id": null
   }
  ]
