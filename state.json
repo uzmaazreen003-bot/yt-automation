@@ -1,9 +1,10 @@
 {
- "palette_i": 1,
+ "palette_i": 2,
  "used": {
   "long": [],
   "short": [
-   "Pehli salary aane par sabse pehle kya karein"
+   "Pehli salary aane par sabse pehle kya karein",
+   "Overthinking kyun hoti hai aur kaise rokein"
   ]
  },
  "log": [
@@ -13,6 +14,14 @@
    "topic": "Pehli salary aane par sabse pehle kya karein",
    "pillar": "money",
    "title": "Pehli Salary Aane Par Yeh Zaroor Karo! #Shorts",
+   "video_id": null
+  },
+  {
+   "date": "2026-11-05 07:08",
+   "format": "short",
+   "topic": "Overthinking kyun hoti hai aur kaise rokein",
+   "pillar": "overthinking",
+   "title": "Overthinking Rokne Ka 5-Minute Formula #Shorts",
    "video_id": null
   }
  ]
