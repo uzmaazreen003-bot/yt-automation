@@ -1,9 +1,10 @@
 {
- "palette_i": 5,
+ "palette_i": 6,
  "used": {
   "long": [
    "Roz ki 10 minute ki self-care routine",
-   "Pehli salary aane par sabse pehle kya karein"
+   "Pehli salary aane par sabse pehle kya karein",
+   "Overthinking kyun hoti hai aur kaise rokein"
   ],
   "short": [
    "Pehli salary aane par sabse pehle kya karein",
@@ -50,6 +51,14 @@
    "topic": "Pehli salary aane par sabse pehle kya karein",
    "pillar": "money",
    "title": "Pehli Salary? Ye 5 Kaam Karo, Life Set Ho Jayegi!",
+   "video_id": null
+  },
+  {
+   "date": "2026-11-05 14:22",
+   "format": "long",
+   "topic": "Overthinking kyun hoti hai aur kaise rokein",
+   "pillar": "overthinking",
+   "title": "Overthinking Kyun Hoti Hai? 5 Simple Tarike Dimaag Ko Shant Karne Ke",
    "video_id": null
   }
  ]
