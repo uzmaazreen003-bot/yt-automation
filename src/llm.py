@@ -33,6 +33,8 @@ Har scene ka format:
 - "takeaway": scene ka chhota key point, Roman Hinglish, max 5 words.
 - "visual": niche ke types mein se EK object. Text bahut chhota rakho. Har scene mein alag type use karo (do baar lagataar same type nahi).
 
+ZAROORI: screen par dikhne wala SAARA text (heading, items, labels, sub, takeaway) Roman Hinglish mein likho (jaise "Salary aate hi pehle savings"), poore English vakya BILKUL nahi (sirf aam English words jaise budget, list, plan chalenge).
+
 Visual types (type field zaroori):
 {"type":"title","heading":"max 6 words","sub":"max 12 words","icon":"star"}
 {"type":"bullets","heading":"max 5 words","items":[{"text":"max 7 words","cue":"ek word jo narration mein tabhi bola jaye jab ye item dikhna chahiye"}]}   (2-4 items)
@@ -86,7 +88,7 @@ def ask(prompt, temperature=0.9, max_tokens=16384):
     """Try every usable model in turn; on 429/5xx move on (each model has its own quota); wait and repeat when all are busy."""
     key = os.environ["GEMINI_API_KEY"]
     if _state["models"] is None:
-        print("LLM-RETRY-V3")
+        print("LLM-RETRY-V4")
         found = _discover(key)
         env = os.environ.get("GEMINI_MODEL")
         pref = [m for m in PREFERRED if (not found or m in found)]
@@ -322,6 +324,7 @@ def make_long(topic, cfg, product_key):
         2, cfg, product_key)
     ch_marks.append(dict(title="Recap aur resources", scene=len(all_scenes)))
     all_scenes += outro[:2]
+    _force_cta(all_scenes[-1], cfg, product_key)
     return dict(title=title, thumb_text=_s(outline.get("thumb_text"), 40).upper() or "DEKHO YE",
                 intro=_s(outline.get("description_intro"), 400), tags=_tags(outline.get("tags")),
                 scenes=all_scenes, chapters=ch_marks)
@@ -340,7 +343,18 @@ def make_short(topic, cfg, product_key):
         f'(product "{product_key}", items 2-3).\n' + NARRATION_RULES,
         5, cfg, product_key)
     return dict(title=_s(obj.get("title"), 95) or _s(topic["topic"], 95), thumb_text="", intro="",
-                tags=_tags(obj.get("tags")), scenes=sc[:8], chapters=[])
+                tags=_tags(obj.get("tags")), scenes=_cta_last(sc[:8], cfg, product_key), chapters=[])
+
+
+def _force_cta(sc, cfg, product_key):
+    if sc["v"]["type"] != "cta":
+        items = [dict(text=b, cue="", icon=None) for b in cfg["products"][product_key]["benefits"][:3]]
+        sc["v"] = dict(type="cta", product=product_key, items=items, _product=cfg["products"][product_key])
+
+
+def _cta_last(scs, cfg, product_key):
+    _force_cta(scs[-1], cfg, product_key)
+    return scs
 
 
 def _tags(raw):

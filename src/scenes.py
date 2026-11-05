@@ -581,8 +581,9 @@ def draw_doodle_big(ctx, sc, t, tl):
     v, R, th, k = sc["v"], sc["_R"], ctx.th, ctx.k
     top = head(ctx, v, t, R)
     land = ctx.w / ctx.h > 1.3
-    cy = top + (ctx.h - top) * (0.42 if not v.get("sub") else 0.40)
-    size = min(ctx.w * 0.2, (ctx.h - top) * 0.3)
+    avail = ctx.h - top
+    cy = top + avail * (0.44 if not v.get("sub") else 0.36)
+    size = min(ctx.w * 0.2, avail * (0.30 if not v.get("sub") else 0.245))
     cx = ctx.w / 2
     bob = math.sin(t * 2.0) * size * 0.03
     ctx.circle(cx, cy + bob, size * 1.25 * min(1, pop(t, R["d0"] - 0.1, 0.4)), fill=th.soft)
@@ -601,7 +602,7 @@ def draw_doodle_big(ctx, sc, t, tl):
     g = ease_out((t - R["cap"]) / 0.4)
     if sub and g > 0:
         lines, sz = fit(ctx, sub, 30 * k, "Bold", ctx.w * 0.86, 2)
-        y = cy + size * 1.55
+        y = min(cy + size * 1.5, ctx.h * 0.95 - len(lines) * sz * 1.22)
         for j, ln in enumerate(lines):
             ctx.text(cx, y + j * sz * 1.22 + (1 - g) * 8 * k, ln, sz, mix(th.card, th.ink, g), "Bold")
 
