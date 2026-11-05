@@ -9,7 +9,7 @@ import requests
 import scenes as S
 
 API = "https://generativelanguage.googleapis.com/v1beta"
-PREFERRED = ["gemini-3.8-flash", "gemini-3.6-flash", "gemini-2.5-flash", "gemini-3.5-flash-lite", "gemini-2.5-flash-lite"]
+PREFERRED = ["gemini-3.8-flash", "gemini-3.6-flash", "gemini-flash-latest", "gemini-3.5-flash-lite", "gemini-flash-lite-latest"]
 _state = {"models": None, "good": None}
 
 SYSTEM = (
@@ -43,23 +43,31 @@ Visual types (type field zaroori):
 {"type":"compare","heading":"...","left":{"title":"Galat","items":["max 6 words"]},"right":{"title":"Sahi","items":["max 6 words"]}}   (1-3 items each)
 {"type":"bars","heading":"...","items":[{"label":"max 2 words","value":30,"prefix":"","suffix":"%","cue":"..."}]}   (3-5 items)
 {"type":"quote","text":"max 18 words","by":"Uzma"}
-Icons: coin, heart, bulb, check, star, lock, target, leaf, moon, clock, book, sparkle.
+{"type":"doodle_flow","heading":"max 5 words","items":[{"text":"max 3 words","icon":"<doodle>","cue":"..."}]}   (2-3 items; narration ki cheezon ko doodles ke arrows mein dikhata hai, jaise salary -> bank -> savings)
+{"type":"doodle_big","heading":"max 5 words","doodle":"<doodle>","extras":["<doodle>","<doodle>"],"sub":"max 10 words"}   (ek bada doodle + 1-3 chhote)
+Doodle/icon names (sirf inhi mein se): ICONLIST.
+Zaroori: doodle_flow ya doodle_big kam se kam har 3rd scene mein use karo (jahan koi cheez/situation dikhai ja sakti ho), aur bullets/steps/checklist ke har item mein narration se milta hua "icon" bhi do.
 """
 
+NARRATION_RULES = NARRATION_RULES.replace("ICONLIST", ", ".join(S.ICONS))
 
 # ------------------------------------------------------------------ Gemini call
 def _discover(key):
+    """All text models this key can really use (so retired/unavailable names are skipped)."""
     try:
         r = requests.get(f"{API}/models", headers={"x-goog-api-key": key}, params={"pageSize": 200}, timeout=60)
         names = [m["name"].split("/")[-1] for m in r.json().get("models", [])
                  if "generateContent" in m.get("supportedGenerationMethods", [])]
-        bad = ("image", "tts", "live", "audio", "embed", "veo", "imagen", "robotics", "computer")
-        flash = [n for n in names if "flash" in n and not any(b in n for b in bad)]
-        flash.sort(key=lambda n: ("lite" in n, "preview" in n, "exp" in n, n), reverse=False)
-        return flash
+        bad = ("image", "tts", "live", "audio", "embed", "veo", "imagen", "robotics", "computer", "customtools", "gemma", "learnlm", "aqa")
+        ok = [n for n in names if n.startswith("gemini") and not any(b in n for b in bad)]
+        return ok
     except Exception as e:  # noqa: BLE001
         print("model discovery failed:", e)
         return []
+
+
+def _rank(n):
+    return ("lite" in n, "preview" in n or "exp" in n, "pro" in n and "flash" not in n, n)
 
 
 def _extract_json(text):
@@ -75,58 +83,63 @@ def _extract_json(text):
 
 
 def ask(prompt, temperature=0.9, max_tokens=16384):
+    """Try every usable model in turn; on 429/5xx move on (each model has its own quota); wait and repeat when all are busy."""
     key = os.environ["GEMINI_API_KEY"]
     if _state["models"] is None:
+        print("LLM-RETRY-V3")
+        found = _discover(key)
         env = os.environ.get("GEMINI_MODEL")
-        _state["models"] = ([env] if env else []) + PREFERRED
+        pref = [m for m in PREFERRED if (not found or m in found)]
+        rest = sorted([m for m in found if m not in pref], key=_rank)
+        _state["models"] = ([env] if env else []) + pref + rest
+        _state["models"] = list(dict.fromkeys(_state["models"]))
+        _state["dead"] = set()
+        print("  gemini models to try:", ", ".join(_state["models"][:10]))
     body = {
         "systemInstruction": {"parts": [{"text": SYSTEM}]},
         "contents": [{"role": "user", "parts": [{"text": prompt}]}],
         "generationConfig": {"temperature": temperature, "responseMimeType": "application/json",
                              "maxOutputTokens": max_tokens},
     }
-    tried_discovery = False
     last_err = None
-    models = [_state["good"]] if _state["good"] else list(_state["models"])
-    mi = 0
-    attempts = 0
-    while mi < len(models) and attempts < 14:
-        model = models[mi]
-        attempts += 1
-        try:
-            r = requests.post(f"{API}/models/{model}:generateContent", headers={"x-goog-api-key": key},
-                              json=body, timeout=240)
-        except requests.RequestException as e:
-            last_err = e
-            time.sleep(8)
-            continue
-        if r.status_code == 429 or r.status_code >= 500:
-            last_err = f"{r.status_code} {r.text[:200]}"
-            print(f"  gemini {model}: {r.status_code}, waiting...")
-            time.sleep(min(70, 15 * attempts))
-            continue
-        if r.status_code in (400, 403, 404):
-            last_err = f"{r.status_code} {r.text[:300]}"
-            print(f"  gemini {model} not usable: {last_err[:160]}")
-            _state["good"] = None
-            mi += 1
-            if mi >= len(models) and not tried_discovery:
-                tried_discovery = True
-                models = _discover(key)
-                mi = 0
-            continue
-        data = r.json()
-        try:
-            parts = data["candidates"][0]["content"]["parts"]
-            text = "".join(p.get("text", "") for p in parts if not p.get("thought"))
-            obj = _extract_json(text)
-        except Exception as e:  # noqa: BLE001
-            last_err = f"bad response: {e} {str(data)[:200]}"
-            print("  ", last_err)
-            time.sleep(4)
-            continue
-        _state["good"] = model
-        return obj
+    waits = [20, 30, 45, 60, 90, 120, 150, 180]
+    for cycle in range(len(waits) + 1):
+        order = [m for m in _state["models"] if m not in _state["dead"]]
+        if _state["good"] in order:
+            order.remove(_state["good"])
+            order.insert(0, _state["good"])
+        for model in order:
+            try:
+                r = requests.post(f"{API}/models/{model}:generateContent", headers={"x-goog-api-key": key},
+                                  json=body, timeout=240)
+            except requests.RequestException as e:
+                last_err = e
+                continue
+            if r.status_code in (400, 403, 404):
+                last_err = f"{r.status_code} {r.text[:200]}"
+                print(f"  gemini {model} not usable ({r.status_code})")
+                _state["dead"].add(model)
+                continue
+            if r.status_code == 429 or r.status_code >= 500:
+                last_err = f"{r.status_code} {r.text[:200]}"
+                print(f"  gemini {model}: {r.status_code}")
+                if r.status_code == 429 and "PerDay" in r.text:
+                    _state["dead"].add(model)
+                time.sleep(2)
+                continue
+            try:
+                parts = r.json()["candidates"][0]["content"]["parts"]
+                text = "".join(p.get("text", "") for p in parts if not p.get("thought"))
+                obj = _extract_json(text)
+            except Exception as e:  # noqa: BLE001
+                last_err = f"bad response: {e} {r.text[:200]}"
+                print("  ", last_err[:160])
+                continue
+            _state["good"] = model
+            return obj
+        if cycle < len(waits):
+            print(f"  all models busy, waiting {waits[cycle]}s (round {cycle + 1}/{len(waits)})")
+            time.sleep(waits[cycle])
     raise RuntimeError(f"Gemini failed: {last_err}")
 
 
@@ -201,6 +214,17 @@ def clean_visual(v, takeaway, cfg, product_key):
             out = dict(type="bars", heading=_s(v.get("heading"), 44), items=its)
     elif ty == "quote" and _s(v.get("text"), 160):
         out = dict(type="quote", text=_s(v["text"], 160), by=_s(v.get("by"), 30))
+    elif ty == "doodle_flow":
+        its = []
+        for i in (v.get("items") or [])[:3]:
+            if isinstance(i, dict) and _s(i.get("text"), 30):
+                its.append(dict(text=_s(i["text"], 30), icon=i.get("icon") if i.get("icon") in S.ICONS else "sparkle", cue=_s(i.get("cue"), 20)))
+        if len(its) >= 2:
+            out = dict(type="doodle_flow", heading=_s(v.get("heading"), 44), items=its)
+    elif ty == "doodle_big":
+        if v.get("doodle") in S.ICONS:
+            out = dict(type="doodle_big", heading=_s(v.get("heading"), 44), doodle=v["doodle"],
+                       extras=[e for e in (v.get("extras") or [])[:3] if e in S.ICONS], sub=_s(v.get("sub"), 70))
     elif ty == "cta":
         items = _items(v.get("items"), 1, 3, 38) or [dict(text=b, cue="", icon=None) for b in cfg["products"][product_key]["benefits"][:3]]
         out = dict(type="cta", product=product_key, items=items)
