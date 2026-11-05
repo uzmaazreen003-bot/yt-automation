@@ -1,10 +1,12 @@
 """Motion-graphics scene templates. Each template has prep() (reveal timing + sfx) and draw()."""
 import math
 
+import doodles
 from common import S2, clamp, ease_out, inr, mix, pop, prog, star_pts
 
-ICONS = ["coin", "heart", "bulb", "check", "star", "lock", "target", "leaf", "moon", "clock", "book", "sparkle"]
-TYPES = ["title", "bullets", "steps", "checklist", "big_number", "split_bar", "compare", "bars", "quote", "cta"]
+BASE_ICONS = ["coin", "heart", "bulb", "check", "star", "lock", "target", "leaf", "moon", "clock", "book", "sparkle"]
+ICONS = BASE_ICONS + [n for n in doodles.NAMES if n not in BASE_ICONS]
+TYPES = ["title", "bullets", "steps", "checklist", "big_number", "split_bar", "compare", "bars", "quote", "cta", "doodle_flow", "doodle_big"]
 
 
 # ------------------------------------------------------------------ helpers
@@ -126,6 +128,9 @@ def icon(ctx, name, cx, cy, r, col, bg=None):
         return
     if bg is not None:
         ctx.circle(cx, cy, r, fill=bg)
+    if name in doodles.LIB:
+        doodles.draw(ctx, name, cx, cy, r * 0.72, 1.0, col if col != bg else None)
+        return
     g = r * 0.56
     if name == "coin":
         ctx.circle(cx, cy, g * 1.1, fill=col)
@@ -217,6 +222,20 @@ def prep(sc, tl):
         R["it"] = item_times(sc, len(items), [i.get("cue") for i in items], tl)
         for t in R["it"]:
             ev.append((t, "pop", 0.8))
+    elif ty == "doodle_flow":
+        head_prep(v, R, ev)
+        items = v["items"]
+        R["it"] = item_times(sc, len(items), [i.get("cue") for i in items], tl)
+        for t in R["it"]:
+            ev.append((t, "pop", 0.8))
+            ev.append((t + 0.35, "tick", 0.7))
+    elif ty == "doodle_big":
+        head_prep(v, R, ev)
+        R["d0"] = 0.9
+        ev.append((0.9, "pop", 0.8))
+        for j in range(len(v.get("extras", []))):
+            ev.append((1.9 + 0.35 * j, "pop2", 0.6))
+        R["cap"] = 2.2
     elif ty == "quote":
         R["q0"] = 0.4
         ev.append((0.4, "pop", 0.8))
@@ -500,6 +519,91 @@ def draw_cta(ctx, sc, t, tl):
         ctx.rr(cxm - w / 2, cym - h / 2, cxm + w / 2, cym + h / 2, 30 * k, fill=th.accent)
         if bp > 0.8:
             ctx.text(cxm, cym, "Link in description", 23 * k, th.white, "Bold")
+
+
+def _arrow(ctx, x0, y0, x1, y1, p, col, lw):
+    if p <= 0:
+        return
+    mx, my = (x0 + x1) / 2, (y0 + y1) / 2 - abs(x1 - x0) * 0.12 - abs(y1 - y0) * 0.0
+    pts = []
+    n = 14
+    for i in range(int(n * min(1, p)) + 1):
+        u = i / n
+        pts.append(((1 - u) ** 2 * x0 + 2 * (1 - u) * u * mx + u * u * x1, (1 - u) ** 2 * y0 + 2 * (1 - u) * u * my + u * u * y1))
+    if len(pts) > 1:
+        ctx.line(pts, col, lw)
+    if p >= 1:
+        a = math.atan2(y1 - my, x1 - mx)
+        h = lw * 3.2
+        for da in (2.6, -2.6):
+            ctx.line([(x1, y1), (x1 + h * math.cos(a + da), y1 + h * math.sin(a + da))], col, lw)
+
+
+def draw_doodle_flow(ctx, sc, t, tl):
+    v, R, th, k = sc["v"], sc["_R"], ctx.th, ctx.k
+    top = head(ctx, v, t, R)
+    items = v["items"]
+    n = len(items)
+    land = ctx.w / ctx.h > 1.3
+    cols = n if n <= 3 or land else 2
+    rows = (n + cols - 1) // cols
+    cw = ctx.w * 0.92 / cols
+    area_h = ctx.h * 0.97 - top
+    ch = area_h / rows
+    size = min(cw * 0.34, ch * 0.34, 96 * k)
+    centers = []
+    for i in range(n):
+        r, c = divmod(i, cols)
+        cx = ctx.w * 0.04 + cw * (c + 0.5)
+        cy = top + ch * (r + 0.5) - size * 0.3
+        centers.append((cx, cy))
+    cols_ = [th.accent, th.accent2, th.accent3]
+    for i, it in enumerate(items):
+        cx, cy = centers[i]
+        ts = R["it"][i]
+        if i > 0 and (centers[i - 1][1] == cy):
+            px, py = centers[i - 1]
+            _arrow(ctx, px + size * 1.1, py, cx - size * 1.1, cy, prog(t, ts - 0.35, 0.4), th.muted, max(2, size * 0.06))
+        if t < ts:
+            continue
+        bob = math.sin((t - ts) * 2.4 + i) * size * 0.03
+        p = prog(t, ts, 0.9)
+        ctx.circle(cx, cy + bob, size * 1.12 * min(1, pop(t, ts, 0.35)), fill=mix(th.card, cols_[i % 3], 0.14))
+        doodles.draw(ctx, it.get("icon") or "sparkle", cx, cy + bob, size * 0.82, p, th.ink)
+        lp = pop(t, ts + 0.7, 0.35)
+        if lp > 0:
+            lines, sz = fit(ctx, it["text"], 25 * k, "Bold", cw * 0.92, 2)
+            for j, ln in enumerate(lines):
+                ctx.text(cx, cy + size * 1.5 + j * sz * 1.2 + (1 - min(lp, 1)) * 6 * k, ln, sz, th.ink, "Bold")
+
+
+def draw_doodle_big(ctx, sc, t, tl):
+    v, R, th, k = sc["v"], sc["_R"], ctx.th, ctx.k
+    top = head(ctx, v, t, R)
+    land = ctx.w / ctx.h > 1.3
+    cy = top + (ctx.h - top) * (0.42 if not v.get("sub") else 0.40)
+    size = min(ctx.w * 0.2, (ctx.h - top) * 0.3)
+    cx = ctx.w / 2
+    bob = math.sin(t * 2.0) * size * 0.03
+    ctx.circle(cx, cy + bob, size * 1.25 * min(1, pop(t, R["d0"] - 0.1, 0.4)), fill=th.soft)
+    doodles.draw(ctx, v.get("doodle") or "sparkle", cx, cy + bob, size, prog(t, R["d0"], 1.2), th.ink)
+    ex = v.get("extras", [])
+    for j, nm in enumerate(ex[:3]):
+        te = 1.9 + 0.35 * j
+        ang = (-150 + 150 * j / max(1, len(ex) - 1) if len(ex) > 1 else -90) if False else None
+        sx = cx + (-1) ** j * size * (1.7 + 0.35 * (j // 2)) if land else cx + (-1) ** j * size * (1.55 + 0.25 * (j // 2))
+        sy = cy + (-0.55 if j == 0 else 0.5 if j == 1 else -0.9) * size + math.sin(t * 1.8 + j * 2) * size * 0.05
+        pp = pop(t, te, 0.4)
+        if pp > 0:
+            ctx.circle(sx, sy, size * 0.5 * min(pp, 1.1), fill=mix(th.card, [th.accent, th.accent2, th.accent3][j % 3], 0.14))
+            doodles.draw(ctx, nm, sx, sy, size * 0.36 * min(pp, 1.1), prog(t, te, 0.6), th.ink)
+    sub = str(v.get("sub", ""))
+    g = ease_out((t - R["cap"]) / 0.4)
+    if sub and g > 0:
+        lines, sz = fit(ctx, sub, 30 * k, "Bold", ctx.w * 0.86, 2)
+        y = cy + size * 1.55
+        for j, ln in enumerate(lines):
+            ctx.text(cx, y + j * sz * 1.22 + (1 - g) * 8 * k, ln, sz, mix(th.card, th.ink, g), "Bold")
 
 
 def draw(ctx, sc, t, tl):

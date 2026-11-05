@@ -43,9 +43,13 @@ Visual types (type field zaroori):
 {"type":"compare","heading":"...","left":{"title":"Galat","items":["max 6 words"]},"right":{"title":"Sahi","items":["max 6 words"]}}   (1-3 items each)
 {"type":"bars","heading":"...","items":[{"label":"max 2 words","value":30,"prefix":"","suffix":"%","cue":"..."}]}   (3-5 items)
 {"type":"quote","text":"max 18 words","by":"Uzma"}
-Icons: coin, heart, bulb, check, star, lock, target, leaf, moon, clock, book, sparkle.
+{"type":"doodle_flow","heading":"max 5 words","items":[{"text":"max 3 words","icon":"<doodle>","cue":"..."}]}   (2-3 items; narration ki cheezon ko doodles ke arrows mein dikhata hai, jaise salary -> bank -> savings)
+{"type":"doodle_big","heading":"max 5 words","doodle":"<doodle>","extras":["<doodle>","<doodle>"],"sub":"max 10 words"}   (ek bada doodle + 1-3 chhote)
+Doodle/icon names (sirf inhi mein se): ICONLIST.
+Zaroori: doodle_flow ya doodle_big kam se kam har 3rd scene mein use karo (jahan koi cheez/situation dikhai ja sakti ho), aur bullets/steps/checklist ke har item mein narration se milta hua "icon" bhi do.
 """
 
+NARRATION_RULES = NARRATION_RULES.replace("ICONLIST", ", ".join(S.ICONS))
 
 # ------------------------------------------------------------------ Gemini call
 def _discover(key):
@@ -210,6 +214,17 @@ def clean_visual(v, takeaway, cfg, product_key):
             out = dict(type="bars", heading=_s(v.get("heading"), 44), items=its)
     elif ty == "quote" and _s(v.get("text"), 160):
         out = dict(type="quote", text=_s(v["text"], 160), by=_s(v.get("by"), 30))
+    elif ty == "doodle_flow":
+        its = []
+        for i in (v.get("items") or [])[:3]:
+            if isinstance(i, dict) and _s(i.get("text"), 30):
+                its.append(dict(text=_s(i["text"], 30), icon=i.get("icon") if i.get("icon") in S.ICONS else "sparkle", cue=_s(i.get("cue"), 20)))
+        if len(its) >= 2:
+            out = dict(type="doodle_flow", heading=_s(v.get("heading"), 44), items=its)
+    elif ty == "doodle_big":
+        if v.get("doodle") in S.ICONS:
+            out = dict(type="doodle_big", heading=_s(v.get("heading"), 44), doodle=v["doodle"],
+                       extras=[e for e in (v.get("extras") or [])[:3] if e in S.ICONS], sub=_s(v.get("sub"), 70))
     elif ty == "cta":
         items = _items(v.get("items"), 1, 3, 38) or [dict(text=b, cue="", icon=None) for b in cfg["products"][product_key]["benefits"][:3]]
         out = dict(type="cta", product=product_key, items=items)
