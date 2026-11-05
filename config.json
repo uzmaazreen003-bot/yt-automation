@@ -1,0 +1,52 @@
+{
+  "channel_name": "Uzma Azreen Studio",
+  "handle": "@uzmaazreen.studio",
+  "store_url": "https://payhip.com/UzmaAzreenDigitalstudio",
+  "instagram": "@uzmaazreen.studio",
+  "voice": "hi-IN-SwaraNeural",
+  "voice_rate": "+0%",
+  "privacy": "public",
+  "synthetic_disclosure": true,
+  "made_for_kids": false,
+  "category_id": "27",
+  "language": "hi",
+  "long_chapters": 8,
+  "long_min_seconds": 380,
+  "post_first_comment": true,
+  "pillar_product": {
+    "money": "first_salary",
+    "overthinking": "why_trap",
+    "selfcare": "self_care",
+    "mental_load": "invisible_work"
+  },
+  "products": {
+    "first_salary": {
+      "title": "How to Manage Your First Salary",
+      "price": "₹199",
+      "link": "https://payhip.com/b/iwUuE",
+      "tagline": "84-page money workbook: spending, savings, debt, emergency fund aur monthly money system",
+      "benefits": ["Spending samjho", "Savings banao", "Emergency fund", "Monthly money system"]
+    },
+    "why_trap": {
+      "title": "The Why Trap",
+      "price": "₹99",
+      "link": "https://payhip.com/b/6fTMQ",
+      "tagline": "7-day guide: breakup ke baad overthinking rokne ke liye (easy English PDF)",
+      "benefits": ["7-din ka simple plan", "Overthinking rokne ke tools", "Easy English"]
+    },
+    "self_care": {
+      "title": "A Guide to Self-Care: Glow From Within",
+      "price": "₹99",
+      "link": "https://payhip.com/b/UxsAz",
+      "tagline": "Mind, body, habits aur confidence ke liye self-care guide",
+      "benefits": ["Roz ki aasan habits", "Confidence badhao", "Mind aur body ka khayal"]
+    },
+    "invisible_work": {
+      "title": "The Invisible Work Reset",
+      "price": "₹299",
+      "link": "https://payhip.com/b/fORcn",
+      "tagline": "7-day system: poore ghar ka bojh apne dimaag mein uthana band karo",
+      "benefits": ["7-din ka reset system", "Kaam baantna seekho", "Dimaag ka bojh kam karo"]
+    }
+  }
+}
