@@ -1,10 +1,11 @@
 {
- "palette_i": 8,
+ "palette_i": 9,
  "used": {
   "long": [
    "Roz ki 10 minute ki self-care routine",
    "Pehli salary aane par sabse pehle kya karein",
-   "Overthinking kyun hoti hai aur kaise rokein"
+   "Overthinking kyun hoti hai aur kaise rokein",
+   "50/30/20 budget rule simple tareeke se"
   ],
   "short": [
    "Pehli salary aane par sabse pehle kya karein",
@@ -78,6 +79,14 @@
    "pillar": "mental_load",
    "title": "Ghar ke kaam ka mental load kaise kam karein #Shorts",
    "video_id": "YmAw2EG_dw4"
+  },
+  {
+   "date": "2026-11-05 17:17",
+   "format": "long",
+   "topic": "50/30/20 budget rule simple tareeke se",
+   "pillar": "money",
+   "title": "Salary aate hi khatam? 50/30/20 budget rule se paise bachao",
+   "video_id": "HUKPr5_QVbY"
   }
  ]
 }
