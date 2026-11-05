@@ -25,28 +25,52 @@
       "price": "₹199",
       "link": "https://payhip.com/b/iwUuE",
       "tagline": "84-page money workbook: spending, savings, debt, emergency fund aur monthly money system",
-      "benefits": ["Spending samjho", "Savings banao", "Emergency fund", "Monthly money system"]
+      "benefits": [
+        "Spending samjho",
+        "Savings banao",
+        "Emergency fund",
+        "Monthly money system"
+      ]
     },
     "why_trap": {
       "title": "The Why Trap",
       "price": "₹99",
       "link": "https://payhip.com/b/6fTMQ",
       "tagline": "7-day guide: breakup ke baad overthinking rokne ke liye (easy English PDF)",
-      "benefits": ["7-din ka simple plan", "Overthinking rokne ke tools", "Easy English"]
+      "benefits": [
+        "7-din ka simple plan",
+        "Overthinking rokne ke tools",
+        "Easy English"
+      ]
     },
     "self_care": {
       "title": "A Guide to Self-Care: Glow From Within",
       "price": "₹99",
       "link": "https://payhip.com/b/UxsAz",
       "tagline": "Mind, body, habits aur confidence ke liye self-care guide",
-      "benefits": ["Roz ki aasan habits", "Confidence badhao", "Mind aur body ka khayal"]
+      "benefits": [
+        "Roz ki aasan habits",
+        "Confidence badhao",
+        "Mind aur body ka khayal"
+      ]
     },
     "invisible_work": {
       "title": "The Invisible Work Reset",
       "price": "₹299",
       "link": "https://payhip.com/b/fORcn",
       "tagline": "7-day system: poore ghar ka bojh apne dimaag mein uthana band karo",
-      "benefits": ["7-din ka reset system", "Kaam baantna seekho", "Dimaag ka bojh kam karo"]
+      "benefits": [
+        "7-din ka reset system",
+        "Kaam baantna seekho",
+        "Dimaag ka bojh kam karo"
+      ]
     }
-  }
+  },
+  "tts_engine": "gemini",
+  "gemini_voice": "Leda",
+  "gemini_tts_models": [
+    "gemini-3.1-flash-tts-preview",
+    "gemini-2.5-flash-preview-tts"
+  ],
+  "voice_style": "Ek 25 saal ki friendly Indian didi ki tarah, natural conversational Hindi mein bolo: garm, khush, expressive, jaise dost ko dil se samjha rahi ho. Sawaal par awaaz upar, zaroori baat par zor, halke halke natural pauses, kabhi halki si hansi. Padhne jaisa bilkul nahi, bolne jaisa. Ye line mat bolna, sirf neeche ka text bolo"
 }
