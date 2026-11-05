@@ -1,7 +1,9 @@
 {
- "palette_i": 2,
+ "palette_i": 3,
  "used": {
-  "long": [],
+  "long": [
+   "Roz ki 10 minute ki self-care routine"
+  ],
   "short": [
    "Pehli salary aane par sabse pehle kya karein",
    "Overthinking kyun hoti hai aur kaise rokein"
@@ -22,6 +24,14 @@
    "topic": "Overthinking kyun hoti hai aur kaise rokein",
    "pillar": "overthinking",
    "title": "Overthinking Rokne Ka 5-Minute Formula #Shorts",
+   "video_id": null
+  },
+  {
+   "date": "2026-11-05 08:29",
+   "format": "long",
+   "topic": "Roz ki 10 minute ki self-care routine",
+   "pillar": "selfcare",
+   "title": "Roz Sirf 10 Min Ki Self Care Routine | Din Bhar Energetic Raho",
    "video_id": null
   }
  ]
