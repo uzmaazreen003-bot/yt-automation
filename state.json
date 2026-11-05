@@ -1,5 +1,5 @@
 {
- "palette_i": 7,
+ "palette_i": 8,
  "used": {
   "long": [
    "Roz ki 10 minute ki self-care routine",
@@ -10,7 +10,8 @@
    "Pehli salary aane par sabse pehle kya karein",
    "Overthinking kyun hoti hai aur kaise rokein",
    "Ghar ka mental load kya hota hai",
-   "Roz ki 10 minute ki self-care routine"
+   "Roz ki 10 minute ki self-care routine",
+   "Ghar ke kaam ka bojh barabar kaise baantein"
   ]
  },
  "log": [
@@ -69,6 +70,14 @@
    "pillar": "selfcare",
    "title": "Roz ka 10 minute wala self-care routine #Shorts",
    "video_id": null
+  },
+  {
+   "date": "2026-11-05 16:58",
+   "format": "short",
+   "topic": "Ghar ke kaam ka bojh barabar kaise baantein",
+   "pillar": "mental_load",
+   "title": "Ghar ke kaam ka mental load kaise kam karein #Shorts",
+   "video_id": "YmAw2EG_dw4"
   }
  ]
 }
