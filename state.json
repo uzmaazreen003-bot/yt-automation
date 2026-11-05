@@ -1,5 +1,5 @@
 {
- "palette_i": 6,
+ "palette_i": 7,
  "used": {
   "long": [
    "Roz ki 10 minute ki self-care routine",
@@ -9,7 +9,8 @@
   "short": [
    "Pehli salary aane par sabse pehle kya karein",
    "Overthinking kyun hoti hai aur kaise rokein",
-   "Ghar ka mental load kya hota hai"
+   "Ghar ka mental load kya hota hai",
+   "Roz ki 10 minute ki self-care routine"
   ]
  },
  "log": [
@@ -59,6 +60,14 @@
    "topic": "Overthinking kyun hoti hai aur kaise rokein",
    "pillar": "overthinking",
    "title": "Overthinking Kyun Hoti Hai? 5 Simple Tarike Dimaag Ko Shant Karne Ke",
+   "video_id": null
+  },
+  {
+   "date": "2026-11-05 16:36",
+   "format": "short",
+   "topic": "Roz ki 10 minute ki self-care routine",
+   "pillar": "selfcare",
+   "title": "Roz ka 10 minute wala self-care routine #Shorts",
    "video_id": null
   }
  ]
