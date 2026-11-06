@@ -1,5 +1,5 @@
 {
- "palette_i": 11,
+ "palette_i": 12,
  "used": {
   "long": [
    "Roz ki 10 minute ki self-care routine",
@@ -14,7 +14,8 @@
    "Ghar ka mental load kya hota hai",
    "Roz ki 10 minute ki self-care routine",
    "Ghar ke kaam ka bojh barabar kaise baantein",
-   "Breakup ke baad baar baar sochna kaise band karein"
+   "Breakup ke baad baar baar sochna kaise band karein",
+   "Roz ki to-do list se stress kaise kam karein"
   ]
  },
  "log": [
@@ -105,6 +106,14 @@
    "pillar": "selfcare",
    "title": "Self-Care Selfish Kyun Nahi Hai? Khud Ke Liye Time Nikalna Sikho",
    "video_id": "3lfJuZsKx3M"
+  },
+  {
+   "date": "2026-11-06 16:49",
+   "format": "short",
+   "topic": "Roz ki to-do list se stress kaise kam karein",
+   "pillar": "mental_load",
+   "title": "Roz Ki To-Do List Se Stress Kam Karne Ka Tareeka #Shorts",
+   "video_id": "Zk7LDyFy7gM"
   }
  ]
 }
