@@ -1,5 +1,5 @@
 {
- "palette_i": 9,
+ "palette_i": 10,
  "used": {
   "long": [
    "Roz ki 10 minute ki self-care routine",
@@ -12,7 +12,8 @@
    "Overthinking kyun hoti hai aur kaise rokein",
    "Ghar ka mental load kya hota hai",
    "Roz ki 10 minute ki self-care routine",
-   "Ghar ke kaam ka bojh barabar kaise baantein"
+   "Ghar ke kaam ka bojh barabar kaise baantein",
+   "Breakup ke baad baar baar sochna kaise band karein"
   ]
  },
  "log": [
@@ -87,6 +88,14 @@
    "pillar": "money",
    "title": "Salary aate hi khatam? 50/30/20 budget rule se paise bachao",
    "video_id": "HUKPr5_QVbY"
+  },
+  {
+   "date": "2026-11-06 03:52",
+   "format": "short",
+   "topic": "Breakup ke baad baar baar sochna kaise band karein",
+   "pillar": "overthinking",
+   "title": "Breakup ke baad baar baar sochna kaise band karein #Shorts",
+   "video_id": "pcOIJPG72BU"
   }
  ]
 }
