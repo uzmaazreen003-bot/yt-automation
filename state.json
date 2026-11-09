@@ -1,5 +1,5 @@
 {
- "palette_i": 20,
+ "palette_i": 21,
  "used": {
   "long": [
    "Roz ki 10 minute ki self-care routine",
@@ -23,7 +23,8 @@
    "Self-care selfish nahi hai, kyun",
    "Sab kuch akele sambhalne ki aadat kaise chhodein",
    "Raat ko dimaag band kyun nahi hota",
-   "Subah ki achhi aadat jo mood badal deti hain"
+   "Subah ki achhi aadat jo mood badal deti hain",
+   "Emergency fund kyun zaroori hai aur kaise banayein"
   ]
  },
  "log": [
@@ -186,6 +187,14 @@
    "pillar": "mental_load",
    "title": "Ghar Ki Saari Chinta Se Thak Gayi Ho? Samjho Mental Load",
    "video_id": "VUel52wR6lM"
+  },
+  {
+   "date": "2026-11-09 16:31",
+   "format": "short",
+   "topic": "Emergency fund kyun zaroori hai aur kaise banayein",
+   "pillar": "money",
+   "title": "Emergency Fund Kaise Banayein? Simple Tip! #Shorts",
+   "video_id": "WkJkOncCplU"
   }
  ]
 }
