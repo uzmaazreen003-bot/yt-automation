@@ -1,5 +1,5 @@
 {
- "palette_i": 21,
+ "palette_i": 22,
  "used": {
   "long": [
    "Roz ki 10 minute ki self-care routine",
@@ -24,7 +24,8 @@
    "Sab kuch akele sambhalne ki aadat kaise chhodein",
    "Raat ko dimaag band kyun nahi hota",
    "Subah ki achhi aadat jo mood badal deti hain",
-   "Emergency fund kyun zaroori hai aur kaise banayein"
+   "Emergency fund kyun zaroori hai aur kaise banayein",
+   "Log kya kahenge ka darr kaise kam karein"
   ]
  },
  "log": [
@@ -195,6 +196,14 @@
    "pillar": "money",
    "title": "Emergency Fund Kaise Banayein? Simple Tip! #Shorts",
    "video_id": "WkJkOncCplU"
+  },
+  {
+   "date": "2026-11-10 03:24",
+   "format": "short",
+   "topic": "Log kya kahenge ka darr kaise kam karein",
+   "pillar": "overthinking",
+   "title": "Log kya kahenge ka darr kaise hatayein #Shorts",
+   "video_id": "umazXRBl31s"
   }
  ]
 }
