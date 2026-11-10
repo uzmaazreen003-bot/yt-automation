@@ -1,5 +1,5 @@
 {
- "palette_i": 23,
+ "palette_i": 24,
  "used": {
   "long": [
    "Roz ki 10 minute ki self-care routine",
@@ -26,7 +26,8 @@
    "Raat ko dimaag band kyun nahi hota",
    "Subah ki achhi aadat jo mood badal deti hain",
    "Emergency fund kyun zaroori hai aur kaise banayein",
-   "Log kya kahenge ka darr kaise kam karein"
+   "Log kya kahenge ka darr kaise kam karein",
+   "Ghar ka weekly planner kaise banayein"
   ]
  },
  "log": [
@@ -213,6 +214,14 @@
    "pillar": "selfcare",
    "title": "Subah Ki Ye Ek Aadat Badal Degi Aapka Mood!",
    "video_id": "_e7JaBj0yuk"
+  },
+  {
+   "date": "2026-11-10 16:24",
+   "format": "short",
+   "topic": "Ghar ka weekly planner kaise banayein",
+   "pillar": "mental_load",
+   "title": "Ghar ka weekly planner kaise banayein #Shorts",
+   "video_id": "06LkUMey6BM"
   }
  ]
 }
