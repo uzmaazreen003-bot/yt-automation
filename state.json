@@ -1,5 +1,5 @@
 {
- "palette_i": 22,
+ "palette_i": 23,
  "used": {
   "long": [
    "Roz ki 10 minute ki self-care routine",
@@ -9,7 +9,8 @@
    "Self-care selfish nahi hai, kyun",
    "Breakup ke baad baar baar sochna kaise band karein",
    "Emergency fund kyun zaroori hai aur kaise banayein",
-   "Ghar ka mental load kya hota hai"
+   "Ghar ka mental load kya hota hai",
+   "Subah ki achhi aadat jo mood badal deti hain"
   ],
   "short": [
    "Pehli salary aane par sabse pehle kya karein",
@@ -204,6 +205,14 @@
    "pillar": "overthinking",
    "title": "Log kya kahenge ka darr kaise hatayein #Shorts",
    "video_id": "umazXRBl31s"
+  },
+  {
+   "date": "2026-11-10 13:55",
+   "format": "long",
+   "topic": "Subah ki achhi aadat jo mood badal deti hain",
+   "pillar": "selfcare",
+   "title": "Subah Ki Ye Ek Aadat Badal Degi Aapka Mood!",
+   "video_id": "_e7JaBj0yuk"
   }
  ]
 }
