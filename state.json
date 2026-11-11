@@ -1,5 +1,5 @@
 {
- "palette_i": 24,
+ "palette_i": 25,
  "used": {
   "long": [
    "Roz ki 10 minute ki self-care routine",
@@ -27,7 +27,8 @@
    "Subah ki achhi aadat jo mood badal deti hain",
    "Emergency fund kyun zaroori hai aur kaise banayein",
    "Log kya kahenge ka darr kaise kam karein",
-   "Ghar ka weekly planner kaise banayein"
+   "Ghar ka weekly planner kaise banayein",
+   "Mahine ke end tak paise kyun nahi bachte"
   ]
  },
  "log": [
@@ -222,6 +223,14 @@
    "pillar": "mental_load",
    "title": "Ghar ka weekly planner kaise banayein #Shorts",
    "video_id": "06LkUMey6BM"
+  },
+  {
+   "date": "2026-11-11 03:28",
+   "format": "short",
+   "topic": "Mahine ke end tak paise kyun nahi bachte",
+   "pillar": "money",
+   "title": "Month end tak paise kyun nahi bachte? #Shorts",
+   "video_id": "Ha8HqxVYtso"
   }
  ]
 }
