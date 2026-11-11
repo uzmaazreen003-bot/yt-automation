@@ -1,5 +1,5 @@
 {
- "palette_i": 25,
+ "palette_i": 26,
  "used": {
   "long": [
    "Roz ki 10 minute ki self-care routine",
@@ -10,7 +10,8 @@
    "Breakup ke baad baar baar sochna kaise band karein",
    "Emergency fund kyun zaroori hai aur kaise banayein",
    "Ghar ka mental load kya hota hai",
-   "Subah ki achhi aadat jo mood badal deti hain"
+   "Subah ki achhi aadat jo mood badal deti hain",
+   "Raat ko dimaag band kyun nahi hota"
   ],
   "short": [
    "Pehli salary aane par sabse pehle kya karein",
@@ -231,6 +232,14 @@
    "pillar": "money",
    "title": "Month end tak paise kyun nahi bachte? #Shorts",
    "video_id": "Ha8HqxVYtso"
+  },
+  {
+   "date": "2026-11-11 14:00",
+   "format": "long",
+   "topic": "Raat ko dimaag band kyun nahi hota",
+   "pillar": "overthinking",
+   "title": "Raat ko dimaag band kyun nahi hota? Ye aadat badlo",
+   "video_id": "ytLNAYCBZG0"
   }
  ]
 }
