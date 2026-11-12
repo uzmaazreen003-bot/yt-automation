@@ -1,5 +1,5 @@
 {
- "palette_i": 26,
+ "palette_i": 27,
  "used": {
   "long": [
    "Roz ki 10 minute ki self-care routine",
@@ -29,7 +29,8 @@
    "Emergency fund kyun zaroori hai aur kaise banayein",
    "Log kya kahenge ka darr kaise kam karein",
    "Ghar ka weekly planner kaise banayein",
-   "Mahine ke end tak paise kyun nahi bachte"
+   "Mahine ke end tak paise kyun nahi bachte",
+   "Thake hue hone par khud ko kaise sambhalein"
   ]
  },
  "log": [
@@ -240,6 +241,14 @@
    "pillar": "overthinking",
    "title": "Raat ko dimaag band kyun nahi hota? Ye aadat badlo",
    "video_id": "ytLNAYCBZG0"
+  },
+  {
+   "date": "2026-11-12 03:30",
+   "format": "short",
+   "topic": "Thake hue hone par khud ko kaise sambhalein",
+   "pillar": "selfcare",
+   "title": "Thake Hue Hone Par Khud Ko Kaise Sambhalein | Self Care #Shorts",
+   "video_id": "CilgtEsR-K4"
   }
  ]
 }
