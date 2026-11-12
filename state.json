@@ -1,5 +1,5 @@
 {
- "palette_i": 28,
+ "palette_i": 29,
  "used": {
   "long": [
    "Roz ki 10 minute ki self-care routine",
@@ -31,7 +31,8 @@
    "Log kya kahenge ka darr kaise kam karein",
    "Ghar ka weekly planner kaise banayein",
    "Mahine ke end tak paise kyun nahi bachte",
-   "Thake hue hone par khud ko kaise sambhalein"
+   "Thake hue hone par khud ko kaise sambhalein",
+   "Impulse shopping rokne ke 5 tareeke"
   ]
  },
  "log": [
@@ -258,6 +259,14 @@
    "pillar": "mental_load",
    "title": "Akele Ghar Ka Kaam Sambhalte Thak Gayi Ho? Aise Karein Load Divide",
    "video_id": "N5JqKeba4JI"
+  },
+  {
+   "date": "2026-11-12 16:33",
+   "format": "short",
+   "topic": "Impulse shopping rokne ke 5 tareeke",
+   "pillar": "money",
+   "title": "Impulse Shopping Rokne Ka 24-Hour Rule #Shorts",
+   "video_id": "gPD5aBvQTWQ"
   }
  ]
 }
