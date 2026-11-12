@@ -1,5 +1,5 @@
 {
- "palette_i": 27,
+ "palette_i": 28,
  "used": {
   "long": [
    "Roz ki 10 minute ki self-care routine",
@@ -11,7 +11,8 @@
    "Emergency fund kyun zaroori hai aur kaise banayein",
    "Ghar ka mental load kya hota hai",
    "Subah ki achhi aadat jo mood badal deti hain",
-   "Raat ko dimaag band kyun nahi hota"
+   "Raat ko dimaag band kyun nahi hota",
+   "Ghar ke kaam ka bojh barabar kaise baantein"
   ],
   "short": [
    "Pehli salary aane par sabse pehle kya karein",
@@ -249,6 +250,14 @@
    "pillar": "selfcare",
    "title": "Thake Hue Hone Par Khud Ko Kaise Sambhalein | Self Care #Shorts",
    "video_id": "CilgtEsR-K4"
+  },
+  {
+   "date": "2026-11-12 14:17",
+   "format": "long",
+   "topic": "Ghar ke kaam ka bojh barabar kaise baantein",
+   "pillar": "mental_load",
+   "title": "Akele Ghar Ka Kaam Sambhalte Thak Gayi Ho? Aise Karein Load Divide",
+   "video_id": "N5JqKeba4JI"
   }
  ]
 }
