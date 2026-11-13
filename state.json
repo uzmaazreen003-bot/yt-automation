@@ -1,5 +1,5 @@
 {
- "palette_i": 31,
+ "palette_i": 32,
  "used": {
   "long": [
    "Roz ki 10 minute ki self-care routine",
@@ -34,7 +34,8 @@
    "Mahine ke end tak paise kyun nahi bachte",
    "Thake hue hone par khud ko kaise sambhalein",
    "Impulse shopping rokne ke 5 tareeke",
-   "Purani baatein yaad karke dukhi hona kaise rokein"
+   "Purani baatein yaad karke dukhi hona kaise rokein",
+   "Mehmaan aur tyohaar ke stress ko kaise handle karein"
   ]
  },
  "log": [
@@ -285,6 +286,14 @@
    "pillar": "selfcare",
    "title": "Thakawat se halat kharab? Khud ko aise sambhalein",
    "video_id": "OcICUe9Nzu0"
+  },
+  {
+   "date": "2026-11-13 16:24",
+   "format": "short",
+   "topic": "Mehmaan aur tyohaar ke stress ko kaise handle karein",
+   "pillar": "mental_load",
+   "title": "Mehmaan Aur Tyohaar Ka Stress Kaise Kam Karein? #Shorts",
+   "video_id": "1bQaC2KWvV8"
   }
  ]
 }
