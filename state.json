@@ -1,5 +1,5 @@
 {
- "palette_i": 30,
+ "palette_i": 31,
  "used": {
   "long": [
    "Roz ki 10 minute ki self-care routine",
@@ -12,7 +12,8 @@
    "Ghar ka mental load kya hota hai",
    "Subah ki achhi aadat jo mood badal deti hain",
    "Raat ko dimaag band kyun nahi hota",
-   "Ghar ke kaam ka bojh barabar kaise baantein"
+   "Ghar ke kaam ka bojh barabar kaise baantein",
+   "Thake hue hone par khud ko kaise sambhalein"
   ],
   "short": [
    "Pehli salary aane par sabse pehle kya karein",
@@ -276,6 +277,14 @@
    "pillar": "overthinking",
    "title": "Purani baatein yaad karke dukhi hona kaise rokein? #Shorts",
    "video_id": "Ooc0jtWoclk"
+  },
+  {
+   "date": "2026-11-13 14:18",
+   "format": "long",
+   "topic": "Thake hue hone par khud ko kaise sambhalein",
+   "pillar": "selfcare",
+   "title": "Thakawat se halat kharab? Khud ko aise sambhalein",
+   "video_id": "OcICUe9Nzu0"
   }
  ]
 }
