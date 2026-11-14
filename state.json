@@ -1,5 +1,5 @@
 {
- "palette_i": 34,
+ "palette_i": 35,
  "used": {
   "long": [
    "Roz ki 10 minute ki self-care routine",
@@ -37,7 +37,8 @@
    "Impulse shopping rokne ke 5 tareeke",
    "Purani baatein yaad karke dukhi hona kaise rokein",
    "Mehmaan aur tyohaar ke stress ko kaise handle karein",
-   "Credit card ko samajhdari se kaise use karein"
+   "Credit card ko samajhdari se kaise use karein",
+   "Na bolna seekhne ke aasan tareeke"
   ]
  },
  "log": [
@@ -312,6 +313,14 @@
    "pillar": "overthinking",
    "title": "Log Kya Kahenge? Iss Darr Ko Hamesha Ke Liye Kaise Khatam Karein",
    "video_id": "FnMlfWtNadU"
+  },
+  {
+   "date": "2026-11-14 16:10",
+   "format": "short",
+   "topic": "Na bolna seekhne ke aasan tareeke",
+   "pillar": "selfcare",
+   "title": "Na bolna kaise seekhein #Shorts",
+   "video_id": "4PWtxCXg_qY"
   }
  ]
 }
