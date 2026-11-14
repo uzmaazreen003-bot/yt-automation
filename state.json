@@ -1,5 +1,5 @@
 {
- "palette_i": 32,
+ "palette_i": 33,
  "used": {
   "long": [
    "Roz ki 10 minute ki self-care routine",
@@ -35,7 +35,8 @@
    "Thake hue hone par khud ko kaise sambhalein",
    "Impulse shopping rokne ke 5 tareeke",
    "Purani baatein yaad karke dukhi hona kaise rokein",
-   "Mehmaan aur tyohaar ke stress ko kaise handle karein"
+   "Mehmaan aur tyohaar ke stress ko kaise handle karein",
+   "Credit card ko samajhdari se kaise use karein"
   ]
  },
  "log": [
@@ -294,6 +295,14 @@
    "pillar": "mental_load",
    "title": "Mehmaan Aur Tyohaar Ka Stress Kaise Kam Karein? #Shorts",
    "video_id": "1bQaC2KWvV8"
+  },
+  {
+   "date": "2026-11-14 03:25",
+   "format": "short",
+   "topic": "Credit card ko samajhdari se kaise use karein",
+   "pillar": "money",
+   "title": "Credit Card Ka Smart Rule Jo Bill Ka Dar Khatam Kare #Shorts",
+   "video_id": "ig6YwZnyDLU"
   }
  ]
 }
